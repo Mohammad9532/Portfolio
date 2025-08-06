@@ -28,11 +28,25 @@
             min-height: 100vh;
             color: var(--text-dark);
         }
-        .svg-bg {
+        .hero-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 0;
             pointer-events: none;
+            background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop') center/cover;
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(95,114,190,0.8) 0%, rgba(155,35,234,0.8) 100%);
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
         }
         .container {
             max-width: 1200px;
@@ -54,6 +68,19 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 0;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 3px 0;
+            transition: 0.3s;
         }
         .logo {
             font-size: 2rem;
@@ -189,6 +216,14 @@
             box-shadow: var(--shadow);
             margin: 0 auto;
             border: 6px solid #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
         .about-text {
             font-size: 1.15rem;
@@ -396,25 +431,60 @@
             .section-title { font-size: 1.5rem; }
             .profile-image { width: 120px; height: 120px; font-size: 2rem; }
             .hero-content { padding: 1.5rem 0.5rem; }
+            .nav-links { 
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .contact-text { font-size: 0.8rem; }
+            .about-text { font-size: 1rem; }
+            .experience-item { padding: 1.5rem; }
+            .education-card { padding: 1.5rem; }
+            .skill-card { padding: 1.5rem; }
+            .contact-item { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .hero .tagline { font-size: 1rem; }
+            .section-title { font-size: 1.3rem; }
+            .profile-image { width: 100px; height: 100px; font-size: 1.5rem; }
+            .about-text { font-size: 0.9rem; }
+            .contact-text { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-    <svg class="svg-bg" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="bg-gradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#5f72be"/>
-                <stop offset="100%" stop-color="#9b23ea"/>
-            </linearGradient>
-        </defs>
-        <ellipse cx="1200" cy="100" rx="400" ry="120" fill="url(#bg-gradient)" opacity="0.18"/>
-        <ellipse cx="300" cy="800" rx="500" ry="180" fill="url(#bg-gradient)" opacity="0.13"/>
-        <ellipse cx="700" cy="400" rx="600" ry="200" fill="url(#bg-gradient)" opacity="0.09"/>
-    </svg>
+    <div class="hero-bg">
+        <div class="bg-overlay"></div>
+        <div class="bg-pattern"></div>
+    </div>
     <!-- Header -->
     <header>
         <nav class="container">
             <div class="logo">Mohammad Ahmad</div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -439,7 +509,9 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <div class="profile-image">MA</div>
+                <div class="profile-image">
+                    <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad" class="profile-photo">
+                </div>
                 <div class="about-text">
                     <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with a passion for both numbers and technology. Currently based in Al Ain, Abu Dhabi, UAE, I bring a unique blend of financial expertise and creative problem-solving to every project I undertake.</p>
                     <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development represents my commitment to continuous learning and adapting to the digital age. I also specialize in flyer designing and advertisement planning, helping businesses communicate their message effectively.</p>
@@ -600,6 +672,23 @@
             section.style.transform = 'translateY(20px)';
             section.style.transition = 'opacity 0.6s, transform 0.6s';
             observer.observe(section);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
         });
     </script>
 </body>
