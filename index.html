@@ -345,6 +345,36 @@
             color: #555;
             font-size: 1rem;
         }
+        .contact-text {
+            color: #555;
+            font-size: 0.9rem;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.4;
+        }
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            word-break: break-all;
+        }
+        .contact-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        .contact-icon-link {
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .contact-icon-link:hover {
+            transform: scale(1.1);
+        }
+        .contact-icon-link:hover .contact-icon {
+            box-shadow: 0 8px 24px rgba(95,114,190,0.25);
+        }
         footer {
             background: var(--bg-dark);
             color: var(--text-light);
@@ -486,26 +516,40 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-grid">
                 <div class="contact-item">
-                    <div class="contact-icon">📧</div>
+                    <a href="mailto:mohammadahmadsheikh580@email.com" class="contact-icon-link">
+                        <div class="contact-icon">📧</div>
+                    </a>
                     <h3>Email</h3>
-                    <p>mohammad.ahmad@email.com</p>
+                    <p class="contact-text">mohammadahmadsheikh580@email.com</p>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">📱</div>
+                    <a href="https://wa.me/971544899875" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">📱</div>
+                    </a>
                     <h3>Phone</h3>
-                    <p>+971 XX XXX XXXX</p>
+                    <p class="contact-text">+971 544 899 875</p>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">📍</div>
+                    <a href="https://maps.google.com/?q=Al+Ain+Abu+Dhabi+UAE" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">📍</div>
+                    </a>
                     <h3>Location</h3>
-                    <p>Al Ain, Abu Dhabi, UAE</p>
+                    <p class="contact-text">Al Ain, Abu Dhabi, UAE</p>
+                </div>
+                                <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/mohammadahmad580" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">💼</div>
+                    </a>
+                    <h3>LinkedIn</h3>
+                    <p>Click icon to connect</p>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <p>linkedin.com/in/mohammad-ahmad</p>
+                    <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">📸</div>
+                    </a>
+                    <h3>Instagram</h3>
+                    <p>Click icon to follow</p>
                 </div>
-            </div>
         </div>
     </section>
     <!-- Footer -->
