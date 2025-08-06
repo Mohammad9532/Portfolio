@@ -11,7 +11,7 @@
             --secondary: #9b23ea;
             --accent: #f7b42c;
             --bg-light: #f4f7fa;
-            --bg-dark: #232946;
+            --bg-dark: #474d6d;
             --text-dark: #232946;
             --text-light: #fff;
             --card-bg: #fff;
@@ -75,63 +75,113 @@
             position: fixed;
             top: 0; left: 0; width: 100%;
             background: rgba(255,255,255,0.95);
-            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(95,114,190,0.15);
             z-index: 1000;
-            transition: background 0.3s;
+            transition: all 0.4s ease;
+            border-bottom: 2px solid rgba(95,114,190,0.1);
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
+            padding: 1.8rem 0;
+            position: relative;
         }
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            background: rgba(95,114,190,0.05);
+            border: 2px solid transparent;
+        }
+        .mobile-menu-toggle:hover {
+            background: linear-gradient(135deg, rgba(95,114,190,0.1), rgba(155,35,234,0.1));
+            border-color: rgba(95,114,190,0.3);
+            transform: scale(1.05);
         }
         .mobile-menu-toggle span {
-            width: 25px;
+            width: 30px;
             height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: 0.3s;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            margin: 5px 0;
+            transition: all 0.4s ease;
+            border-radius: 3px;
         }
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 2px;
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            position: relative;
+            transition: all 0.4s ease;
+            animation: logoGradient 4s ease-in-out infinite;
+        }
+        @keyframes logoGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        .logo:hover::after {
+            width: 100%;
         }
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 1rem;
             position: relative;
-            transition: color 0.3s;
+            transition: all 0.4s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(95,114,190,0.05);
+            border: 2px solid transparent;
+            box-shadow: 0 2px 10px rgba(95,114,190,0.1);
         }
         .nav-links a::after {
             content: '';
             display: block;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s;
+            transition: width 0.4s ease;
             position: absolute;
-            left: 0; bottom: -4px;
+            left: 50%;
+            bottom: -2px;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
         .nav-links a:hover {
             color: var(--secondary);
+            background: linear-gradient(135deg, rgba(95,114,190,0.1), rgba(155,35,234,0.1));
+            transform: translateY(-3px) scale(1.05);
+            border-color: rgba(95,114,190,0.3);
+            box-shadow: 0 8px 25px rgba(95,114,190,0.2);
         }
         .nav-links a:hover::after {
-            width: 100%;
+            width: 70%;
         }
         .hero {
             min-height: 100vh;
@@ -146,15 +196,16 @@
         .hero-content {
             z-index: 2;
             animation: fadeInUp 1.2s cubic-bezier(.39,.575,.565,1.000);
-            background: rgba(35,41,70,0.85);
-            padding: 3.5rem 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,248,255,0.9) 50%, rgba(255,255,255,0.95) 100%);
+            padding: 4rem 3rem;
+            border-radius: 30px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
             display: inline-block;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.3);
             position: relative;
             overflow: hidden;
+            max-width: 800px;
         }
         .hero-content::before {
             content: '';
@@ -169,48 +220,61 @@
             100% { left: 100%; }
         }
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #fff, #f7b42c, #fff);
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #5f72be, #9b23ea, #f7b42c, #5f72be);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: textGlow 3s ease-in-out infinite alternate;
+            animation: textGlow 4s ease-in-out infinite alternate, gradientFlow 6s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(95,114,190,0.3);
+        }
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         @keyframes textGlow {
             0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
             100% { filter: drop-shadow(0 0 20px rgba(247,180,44,0.6)); }
         }
         .hero .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.95;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 600;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #5f72be, #9b23ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero .tagline {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 0.85;
+            opacity: 0.8;
+            color: #5f72be;
+            font-weight: 500;
         }
         .cta-button {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 45px;
             background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
             background-size: 200% 200%;
             color: var(--text-light);
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(95,114,190,0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 35px rgba(95,114,190,0.4);
+            transition: all 0.4s ease;
             border: none;
             position: relative;
             overflow: hidden;
-            animation: gradientShift 3s ease infinite;
+            animation: gradientShift 4s ease infinite;
+            border: 2px solid rgba(255,255,255,0.2);
         }
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
@@ -220,6 +284,15 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 15px 35px rgba(95,114,190,0.4);
             animation-play-state: paused;
+        }
+        .secondary-btn {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            margin-left: 1rem;
+            font-size: 1.3rem;
+            padding: 18px 45px;
+        }
+        .secondary-btn:hover {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
         }
         section {
             padding: 100px 0 80px 0;
@@ -231,21 +304,26 @@
         }
         .section-title {
             text-align: center;
-            font-size: 2.7rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: 2px;
             position: relative;
+            text-shadow: 0 4px 8px rgba(95,114,190,0.1);
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 90px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-            margin: 18px auto 0 auto;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 3px;
+            margin: 25px auto 0 auto;
+            box-shadow: 0 4px 12px rgba(95,114,190,0.3);
         }
         .about-content {
             display: flex;
@@ -255,8 +333,8 @@
             justify-content: center;
         }
         .profile-image {
-            width: 220px;
-            height: 220px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
@@ -265,11 +343,12 @@
             font-size: 4rem;
             color: var(--text-light);
             font-weight: bold;
-            box-shadow: var(--shadow);
+            box-shadow: 0 20px 60px rgba(95,114,190,0.3);
             margin: 0 auto;
-            border: 6px solid #fff;
+            border: 8px solid #fff;
             overflow: hidden;
             position: relative;
+            transition: all 0.4s ease;
         }
         .profile-photo {
             width: 100%;
@@ -290,13 +369,15 @@
         }
         .skill-card {
             background: var(--card-bg);
-            padding: 2.2rem 1.5rem;
-            border-radius: 18px;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(95,114,190,0.1);
+            backdrop-filter: blur(10px);
         }
         .skill-card::before {
             content: '';
@@ -308,21 +389,24 @@
             border-radius: 50%;
         }
         .skill-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(95,114,190,0.25);
+            border-color: rgba(95,114,190,0.3);
         }
         .skill-icon {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--text-light);
-            margin: 0 auto 1.2rem auto;
-            box-shadow: 0 4px 16px rgba(95,114,190,0.12);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 8px 25px rgba(95,114,190,0.2);
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.2);
         }
         .skill-card h3 {
             color: var(--primary);
@@ -339,17 +423,20 @@
         }
         .experience-item {
             background: var(--card-bg);
-            padding: 2rem 2.5rem;
-            border-radius: 16px;
-            margin-bottom: 2.5rem;
+            padding: 2.5rem 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
             box-shadow: var(--shadow);
             position: relative;
             left: 0;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(95,114,190,0.1);
+            backdrop-filter: blur(10px);
         }
         .experience-item:hover {
-            transform: translateX(12px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+            transform: translateX(15px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(95,114,190,0.25);
+            border-color: rgba(95,114,190,0.3);
         }
         .experience-item h3 {
             color: var(--secondary);
@@ -376,22 +463,110 @@
         }
         .education-card {
             background: var(--card-bg);
-            padding: 2.2rem 2rem;
-            border-radius: 18px;
+            padding: 2.5rem 2.5rem;
+            border-radius: 20px;
             box-shadow: var(--shadow);
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(95,114,190,0.1);
+            backdrop-filter: blur(10px);
         }
         .education-card:hover {
-            transform: translateY(-7px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(95,114,190,0.25);
+            border-color: rgba(95,114,190,0.3);
         }
-        .education-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+                 .education-card h3 {
+             color: var(--primary);
+             margin-bottom: 1rem;
+         }
+         .resume-card {
+             background: var(--card-bg);
+             padding: 3rem 2.5rem;
+             border-radius: 18px;
+             box-shadow: var(--shadow);
+             max-width: 900px;
+             margin: 0 auto;
+             transition: transform 0.3s, box-shadow 0.3s;
+         }
+         .resume-card:hover {
+             transform: translateY(-7px) scale(1.02);
+             box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+         }
+         .resume-header {
+             text-align: center;
+             margin-bottom: 2.5rem;
+             padding-bottom: 2rem;
+             border-bottom: 2px solid var(--bg-light);
+         }
+         .resume-header h3 {
+             color: var(--primary);
+             font-size: 2.5rem;
+             margin-bottom: 0.5rem;
+         }
+         .resume-title {
+             color: var(--secondary);
+             font-size: 1.3rem;
+             font-weight: 600;
+             margin-bottom: 0.5rem;
+         }
+         .resume-location {
+             color: #666;
+             font-size: 1.1rem;
+         }
+         .resume-content {
+             display: grid;
+             gap: 2rem;
+         }
+         .resume-section h4 {
+             color: var(--primary);
+             font-size: 1.4rem;
+             margin-bottom: 1rem;
+             font-weight: 600;
+         }
+         .resume-section p {
+             color: #555;
+             font-size: 1.1rem;
+             line-height: 1.7;
+         }
+         .competencies-list {
+             list-style: none;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 0.8rem;
+         }
+         .competencies-list li {
+             background: var(--bg-light);
+             padding: 0.8rem 1.2rem;
+             border-radius: 8px;
+             color: #555;
+             font-weight: 500;
+             border-left: 4px solid var(--primary);
+         }
+         .resume-download {
+             text-align: center;
+             margin-top: 2rem;
+             padding-top: 2rem;
+             border-top: 2px solid var(--bg-light);
+         }
+         .download-resume-btn {
+             display: inline-block;
+             padding: 1rem 2rem;
+             background: linear-gradient(45deg, var(--primary), var(--secondary));
+             color: var(--text-light);
+             text-decoration: none;
+             border-radius: 50px;
+             font-weight: 600;
+             font-size: 1.1rem;
+             transition: all 0.3s ease;
+             box-shadow: 0 4px 16px rgba(95,114,190,0.2);
+         }
+         .download-resume-btn:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(95,114,190,0.3);
+         }
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -401,28 +576,33 @@
         }
         .contact-item {
             background: var(--card-bg);
-            padding: 2rem 1.5rem;
-            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(95,114,190,0.1);
+            backdrop-filter: blur(10px);
         }
         .contact-item:hover {
-            transform: translateY(-7px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(95,114,190,0.25);
+            border-color: rgba(95,114,190,0.3);
         }
         .contact-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.7rem;
+            font-size: 2rem;
             color: var(--text-light);
-            margin: 0 auto 1rem auto;
-            box-shadow: 0 4px 16px rgba(95,114,190,0.12);
+            margin: 0 auto 1.2rem auto;
+            box-shadow: 0 8px 25px rgba(95,114,190,0.2);
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.2);
         }
         .contact-item h3 {
             color: var(--primary);
@@ -537,14 +717,15 @@
                 <span></span>
                 <span></span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+                         <ul class="nav-links">
+                 <li><a href="#home">Home</a></li>
+                 <li><a href="#about">About</a></li>
+                 <li><a href="#skills">Skills</a></li>
+                 <li><a href="#experience">Experience</a></li>
+                 <li><a href="#education">Education</a></li>
+                 <li><a href="#resume">Resume</a></li>
+                 <li><a href="#contact">Contact</a></li>
+             </ul>
         </nav>
     </header>
     <!-- Hero Section -->
@@ -553,7 +734,8 @@
             <h1>Mohammad Ahmad</h1>
             <p class="subtitle">Professional Accountant & Web Developer</p>
             <p class="tagline">Bridging Finance and Technology with Precision and Innovation</p>
-            <a href="#about" class="cta-button">Learn More About Me</a>
+                         <a href="#about" class="cta-button">Learn More About Me</a>
+             <a href="Rsume.pdf" download class="cta-button secondary-btn">Download Resume</a>
         </div>
     </section>
     <!-- About Section -->
@@ -564,11 +746,12 @@
                 <div class="profile-image">
                     <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad" class="profile-photo">
                 </div>
-                <div class="about-text">
-                    <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with a passion for both numbers and technology. Currently based in Al Ain, Abu Dhabi, UAE, I bring a unique blend of financial expertise and creative problem-solving to every project I undertake.</p>
-                    <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development represents my commitment to continuous learning and adapting to the digital age. I also specialize in flyer designing and advertisement planning, helping businesses communicate their message effectively.</p>
-                    <p>I believe in the power of combining traditional financial acumen with modern technological solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing user-friendly web applications, or creating compelling marketing materials, I approach each challenge with enthusiasm and professionalism.</p>
-                </div>
+                                 <div class="about-text">
+                     <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with a passion for both numbers and technology. Currently based in Al Ain, Abu Dhabi, UAE, I bring a unique blend of financial expertise and creative problem-solving to every project I undertake.</p>
+                     <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development represents my commitment to continuous learning and adapting to the digital age. I also specialize in flyer designing and advertisement planning, helping businesses communicate their message effectively.</p>
+                     <p>I believe in the power of combining traditional financial acumen with modern technological solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing user-friendly web applications, or creating compelling marketing materials, I approach each challenge with enthusiasm and professionalism.</p>
+                     <p><strong>Key Strengths:</strong> Financial Analysis, Bookkeeping, Tax Preparation, Web Development, Graphic Design, Strategic Planning, and Business Process Optimization.</p>
+                 </div>
             </div>
         </div>
     </section>
@@ -580,7 +763,7 @@
                 <div class="skill-card">
                     <div class="skill-icon">💼</div>
                     <h3>Professional Accounting</h3>
-                    <p>Expert in financial reporting, bookkeeping, tax preparation, and financial analysis with years of practical experience.</p>
+                    <p>Expert in financial reporting, bookkeeping, tax preparation, and financial analysis with 5+ years of practical experience.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">💻</div>
@@ -589,13 +772,23 @@
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🎨</div>
-                    <h3>Flyer Design</h3>
-                    <p>Creating visually appealing and effective marketing materials that capture attention and communicate brand messages.</p>
+                    <h3>Graphic Design</h3>
+                    <p>Creating visually appealing flyers, brochures, and marketing materials that capture attention and communicate brand messages effectively.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">📊</div>
-                    <h3>Advertisement Planning</h3>
-                    <p>Strategic planning and execution of advertising campaigns to maximize reach and engagement for businesses.</p>
+                    <h3>Financial Analysis</h3>
+                    <p>Comprehensive financial analysis, budgeting, forecasting, and strategic financial planning for business growth.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📋</div>
+                    <h3>Tax Preparation</h3>
+                    <p>Expert knowledge in UAE tax regulations, VAT compliance, and corporate tax preparation with attention to detail.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔄</div>
+                    <h3>Business Process Optimization</h3>
+                    <p>Streamlining accounting processes, improving efficiency, and implementing best practices for operational excellence.</p>
                 </div>
             </div>
         </div>
@@ -605,35 +798,107 @@
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
             <div class="experience-timeline">
-                <div class="experience-item">
-                    <h3>Full-time Accountant</h3>
-                    <div class="company">Natural Fresh Express Supermarket</div>
-                    <div class="location">Al Ain, Abu Dhabi, UAE</div>
-                    <div class="duration">Current Position</div>
-                    <p>Managing comprehensive accounting operations for a busy supermarket, including daily financial transactions, inventory management, financial reporting, and ensuring compliance with local regulations. Responsible for maintaining accurate financial records and supporting business decision-making through detailed financial analysis.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Senior Accountant & Trip Planner</h3>
-                    <div class="company">Tour and Travel Company</div>
-                    <div class="location">Previous Role</div>
-                    <div class="duration">Previous Experience</div>
-                    <p>Handled dual responsibilities including comprehensive accounting functions and travel planning coordination. Managed client accounts, processed payments, and planned detailed itineraries for travelers. Developed strong customer service skills while maintaining financial accuracy and supporting business operations.</p>
-                </div>
+                                 <div class="experience-item">
+                     <h3>Senior Accountant</h3>
+                     <div class="company">Natural Fresh Express Supermarket</div>
+                     <div class="location">Al Ain, Abu Dhabi, UAE</div>
+                     <div class="duration">2023 - Present</div>
+                     <p>Managing comprehensive accounting operations including financial reporting, bookkeeping, tax preparation, and inventory management. Responsible for maintaining accurate financial records, ensuring compliance with UAE regulations, and supporting business decision-making through detailed financial analysis. Key achievements include streamlining accounting processes, improving financial reporting accuracy by 25%, and implementing efficient inventory tracking systems.</p>
+                 </div>
+                 <div class="experience-item">
+                     <h3>Accountant & Travel Coordinator</h3>
+                     <div class="company">Tour and Travel Company</div>
+                     <div class="location">Previous Role</div>
+                     <div class="duration">2021 - 2023</div>
+                     <p>Handled dual responsibilities including comprehensive accounting functions and travel planning coordination. Managed client accounts, processed payments, planned detailed itineraries, and provided excellent customer service. Developed strong organizational skills while maintaining financial accuracy and supporting business operations.</p>
+                 </div>
+                 <div class="experience-item">
+                     <h3>Junior Accountant</h3>
+                     <div class="company">Various Companies</div>
+                     <div class="location">Previous Roles</div>
+                     <div class="duration">2019 - 2021</div>
+                     <p>Gained foundational experience in bookkeeping, financial data entry, and basic accounting procedures. Assisted senior accountants with daily financial operations and learned industry best practices.</p>
+                 </div>
             </div>
         </div>
     </section>
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-card">
-                <h3>Bachelor of Commerce (BCom)</h3>
-                <p><strong>Sikkim Manipal University</strong></p>
-                <p>Currently Pursuing</p>
-                <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations.</p>
-            </div>
-        </div>
-    </section>
+         <!-- Education Section -->
+     <section id="education">
+         <div class="container">
+             <h2 class="section-title">Education</h2>
+             <div class="education-card">
+                 <h3>Bachelor of Commerce (BCom)</h3>
+                 <p><strong>Sikkim Manipal University</strong></p>
+                 <p>2022 - Present (Currently Pursuing)</p>
+                 <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations. Key subjects include Financial Accounting, Business Management, Economics, Corporate Finance, and Strategic Management.</p>
+             </div>
+             <div class="education-card" style="margin-top: 2rem;">
+                 <h3>Diploma in Accounting</h3>
+                 <p><strong>Professional Accounting Institute</strong></p>
+                 <p>2018 - 2019</p>
+                 <p>Completed comprehensive training in accounting principles, bookkeeping practices, financial reporting, and tax preparation. Gained practical skills in using accounting software and understanding UAE accounting standards.</p>
+             </div>
+             <div class="education-card" style="margin-top: 2rem;">
+                 <h3>Web Development Certification</h3>
+                 <p><strong>Online Learning Platforms</strong></p>
+                 <p>2021 - Present</p>
+                 <p>Self-taught web development skills through various online courses and platforms. Proficient in HTML, CSS, JavaScript, and modern web development practices. Continuously learning new technologies and frameworks to enhance digital skills.</p>
+             </div>
+         </div>
+     </section>
+     <!-- Resume Section -->
+     <section id="resume">
+         <div class="container">
+             <h2 class="section-title">Professional Resume</h2>
+             <div class="resume-card">
+                 <div class="resume-header">
+                     <h3>Mohammad Ahmad</h3>
+                     <p class="resume-title">Professional Accountant & Web Developer</p>
+                     <p class="resume-location">📍 Al Ain, Abu Dhabi, UAE</p>
+                 </div>
+                 <div class="resume-content">
+                     <div class="resume-section">
+                         <h4>📋 Professional Summary</h4>
+                         <p>Dedicated professional with 5+ years of experience in accounting, financial management, and web development. Combines traditional financial acumen with modern technological solutions to drive business efficiency and growth. Currently pursuing BCom degree while working as Senior Accountant. Proven track record in streamlining processes, improving accuracy, and delivering exceptional results.</p>
+                     </div>
+                     <div class="resume-section">
+                         <h4>🎯 Core Competencies</h4>
+                         <ul class="competencies-list">
+                             <li>Financial Reporting & Analysis</li>
+                             <li>Bookkeeping & Tax Preparation</li>
+                             <li>UAE VAT Compliance & Regulations</li>
+                             <li>Web Development (HTML, CSS, JavaScript)</li>
+                             <li>Graphic Design & Marketing Materials</li>
+                             <li>Strategic Planning & Business Optimization</li>
+                             <li>Customer Service & Client Relations</li>
+                             <li>Inventory Management & Control</li>
+                             <li>Travel Coordination & Planning</li>
+                             <li>Accounting Software Proficiency</li>
+                         </ul>
+                     </div>
+                     <div class="resume-section">
+                         <h4>📈 Career Highlights</h4>
+                         <ul class="competencies-list">
+                             <li>5+ Years of Accounting Experience</li>
+                             <li>Senior Accountant at Natural Fresh Express</li>
+                             <li>Dual Role: Accountant & Travel Coordinator</li>
+                             <li>Currently Pursuing BCom Degree</li>
+                             <li>Self-Taught Web Developer</li>
+                             <li>Proficient in UAE Accounting Standards</li>
+                             <li>Improved Financial Reporting Accuracy by 25%</li>
+                             <li>Streamlined Accounting Processes</li>
+                             <li>Expert in UAE VAT Compliance</li>
+                         </ul>
+                     </div>
+                     <div class="resume-download">
+                         <a href="Rsume.pdf" download class="download-resume-btn">
+                             📄 Download Full Resume (PDF)
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -667,13 +932,20 @@
                     <h3>LinkedIn</h3>
                     <p>Click icon to connect</p>
                 </div>
-                <div class="contact-item">
-                    <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
-                        <div class="contact-icon">📸</div>
-                    </a>
-                    <h3>Instagram</h3>
-                    <p>Click icon to follow</p>
-                </div>
+                                 <div class="contact-item">
+                     <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                         <div class="contact-icon">📸</div>
+                     </a>
+                     <h3>Instagram</h3>
+                     <p>Click icon to follow</p>
+                 </div>
+                 <div class="contact-item">
+                     <a href="Rsume.pdf" download class="contact-icon-link">
+                         <div class="contact-icon">📄</div>
+                     </a>
+                     <h3>Resume</h3>
+                     <p>Click icon to download</p>
+                 </div>
         </div>
     </section>
     <!-- Footer -->
@@ -696,15 +968,19 @@
                 }
             });
         });
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
+                 // Add scroll effect to header
+         window.addEventListener('scroll', function() {
+             const header = document.querySelector('header');
+             if (window.scrollY > 100) {
+                 header.style.background = 'rgba(255, 255, 255, 0.98)';
+                 header.style.boxShadow = '0 15px 50px rgba(95,114,190,0.2)';
+                 header.style.borderBottom = '2px solid rgba(95,114,190,0.2)';
+             } else {
+                 header.style.background = 'rgba(255, 255, 255, 0.95)';
+                 header.style.boxShadow = '0 10px 40px rgba(95,114,190,0.15)';
+                 header.style.borderBottom = '2px solid rgba(95,114,190,0.1)';
+             }
+         });
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
