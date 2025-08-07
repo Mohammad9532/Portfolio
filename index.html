@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Ahmad - Professional Accountant & Web Developer</title>
+         <title>Mohammad Ahmad - Professional Accountant, Web Developer & Creative Designer</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -111,19 +111,37 @@
             transition: all 0.4s ease;
             border-radius: 3px;
         }
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 3px;
-            position: relative;
-            transition: all 0.4s ease;
-            animation: logoGradient 4s ease-in-out infinite;
-        }
+                 .logo {
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+             font-size: 2.4rem;
+             font-weight: 800;
+             background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+             background-size: 200% 200%;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             letter-spacing: 3px;
+             position: relative;
+             transition: all 0.4s ease;
+             animation: logoGradient 4s ease-in-out infinite;
+         }
+         .header-profile-image {
+             width: 45px;
+             height: 45px;
+             border-radius: 50%;
+             border: 2px solid rgba(95,114,190,0.3);
+             box-shadow: 0 4px 15px rgba(95,114,190,0.2);
+             overflow: hidden;
+             flex-shrink: 0;
+         }
+         .header-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
         @keyframes logoGradient {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -193,20 +211,36 @@
             position: relative;
             background: none;
         }
-        .hero-content {
-            z-index: 2;
-            animation: fadeInUp 1.2s cubic-bezier(.39,.575,.565,1.000);
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,248,255,0.9) 50%, rgba(255,255,255,0.95) 100%);
-            padding: 4rem 3rem;
-            border-radius: 30px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
-            display: inline-block;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255,255,255,0.3);
-            position: relative;
-            overflow: hidden;
-            max-width: 800px;
-        }
+                 .hero-content {
+             z-index: 2;
+             animation: fadeInUp 1.2s cubic-bezier(.39,.575,.565,1.000);
+             background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,248,255,0.9) 50%, rgba(255,255,255,0.95) 100%);
+             padding: 4rem 3rem;
+             border-radius: 30px;
+             box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+             display: inline-block;
+             backdrop-filter: blur(20px);
+             border: 2px solid rgba(255,255,255,0.3);
+             position: relative;
+             overflow: hidden;
+             max-width: 800px;
+         }
+         .hero-profile-image {
+             width: 120px;
+             height: 120px;
+             border-radius: 50%;
+             margin: 0 auto 2rem auto;
+             border: 4px solid rgba(255,255,255,0.3);
+             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+             overflow: hidden;
+             display: block;
+         }
+         .hero-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
         .hero-content::before {
             content: '';
             position: absolute;
@@ -501,6 +535,22 @@
              padding-bottom: 2rem;
              border-bottom: 2px solid var(--bg-light);
          }
+         .resume-profile-image {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             margin: 0 auto 1.5rem auto;
+             border: 3px solid var(--primary);
+             box-shadow: 0 8px 25px rgba(95,114,190,0.2);
+             overflow: hidden;
+             display: block;
+         }
+         .resume-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
          .resume-header h3 {
              color: var(--primary);
              font-size: 2.5rem;
@@ -657,12 +707,15 @@
             .about-content { flex-direction: column; gap: 2rem; }
             .profile-image { margin-bottom: 1.5rem; }
         }
-        @media (max-width: 600px) {
-            .container { padding: 0 10px; }
-            .hero h1 { font-size: 2.1rem; }
-            .section-title { font-size: 1.5rem; }
-            .profile-image { width: 120px; height: 120px; font-size: 2rem; }
-            .hero-content { padding: 1.5rem 0.5rem; }
+                 @media (max-width: 600px) {
+             .container { padding: 0 10px; }
+             .hero h1 { font-size: 2.1rem; }
+             .section-title { font-size: 1.5rem; }
+             .profile-image { width: 120px; height: 120px; font-size: 2rem; }
+             .hero-content { padding: 1.5rem 0.5rem; }
+             .hero-profile-image { width: 80px; height: 80px; }
+             .header-profile-image { width: 35px; height: 35px; }
+             .logo { font-size: 1.8rem; gap: 0.5rem; }
             .nav-links { 
                 display: none; 
                 position: absolute;
@@ -692,15 +745,18 @@
             .skill-card { padding: 1.5rem; }
             .contact-item { padding: 1.5rem; }
         }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            .hero .tagline { font-size: 1rem; }
-            .section-title { font-size: 1.3rem; }
-            .profile-image { width: 100px; height: 100px; font-size: 1.5rem; }
-            .about-text { font-size: 0.9rem; }
-            .contact-text { font-size: 0.75rem; }
-        }
+                 @media (max-width: 480px) {
+             .hero h1 { font-size: 1.8rem; }
+             .hero .subtitle { font-size: 1.1rem; }
+             .hero .tagline { font-size: 1rem; }
+             .section-title { font-size: 1.3rem; }
+             .profile-image { width: 100px; height: 100px; font-size: 1.5rem; }
+             .about-text { font-size: 0.9rem; }
+             .contact-text { font-size: 0.75rem; }
+             .hero-profile-image { width: 60px; height: 60px; }
+             .header-profile-image { width: 30px; height: 30px; }
+             .logo { font-size: 1.5rem; gap: 0.3rem; }
+         }
     </style>
 </head>
 <body>
@@ -710,8 +766,13 @@
     </div>
     <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">Mohammad Ahmad</div>
+                 <nav class="container">
+             <div class="logo">
+                 <div class="header-profile-image">
+                     <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+                 </div>
+                 Mohammad Ahmad
+             </div>
             <div class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -730,13 +791,16 @@
     </header>
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Mohammad Ahmad</h1>
-            <p class="subtitle">Professional Accountant & Web Developer</p>
-            <p class="tagline">Bridging Finance and Technology with Precision and Innovation</p>
-                         <a href="#about" class="cta-button">Learn More About Me</a>
-             <a href="Rsume.pdf" download class="cta-button secondary-btn">Download Resume</a>
-        </div>
+                 <div class="hero-content">
+             <div class="hero-profile-image">
+                 <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+             </div>
+             <h1>Mohammad Ahmad</h1>
+                          <p class="subtitle">Professional Accountant, Web Developer & Creative Designer</p>
+                          <p class="tagline">Bridging Finance, Technology and Design with Precision and Innovation</p>
+                          <a href="#about" class="cta-button">Learn More About Me</a>
+              <a href="Rsume.pdf" download class="cta-button secondary-btn">Download Resume</a>
+         </div>
     </section>
     <!-- About Section -->
     <section id="about">
@@ -747,10 +811,10 @@
                     <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad" class="profile-photo">
                 </div>
                                  <div class="about-text">
-                     <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with a passion for both numbers and technology. Currently based in Al Ain, Abu Dhabi, UAE, I bring a unique blend of financial expertise and creative problem-solving to every project I undertake.</p>
-                     <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development represents my commitment to continuous learning and adapting to the digital age. I also specialize in flyer designing and advertisement planning, helping businesses communicate their message effectively.</p>
-                     <p>I believe in the power of combining traditional financial acumen with modern technological solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing user-friendly web applications, or creating compelling marketing materials, I approach each challenge with enthusiasm and professionalism.</p>
-                     <p><strong>Key Strengths:</strong> Financial Analysis, Bookkeeping, Tax Preparation, Web Development, Graphic Design, Strategic Planning, and Business Process Optimization.</p>
+                                           <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with over two years of experience in financial management, web development, and creative design. Currently based in UAE, I bring a unique blend of accounting expertise, technical skills, and creative problem-solving to every project I undertake.</p>
+                      <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development and flyer design represents my commitment to continuous learning and adapting to modern business needs. I specialize in web development, flyer designing, and digital branding efforts, helping businesses establish strong online presence and communicate their message effectively.</p>
+                      <p>I believe in the power of combining traditional financial acumen with modern technological and design solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing responsive websites, creating compelling marketing materials, or handling multiple business operations, I approach each challenge with enthusiasm and professionalism.</p>
+                                             <p><strong>Key Strengths:</strong> Petty Cash Management, Financial Document Authentication, Inventory Management, Cashier Reconciliation, Web Development, Flyer Design, Accounting Software, and Multi-Business Operations Management.</p>
                  </div>
             </div>
         </div>
@@ -760,36 +824,51 @@
         <div class="container">
             <h2 class="section-title">My Skills</h2>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">💼</div>
-                    <h3>Professional Accounting</h3>
-                    <p>Expert in financial reporting, bookkeeping, tax preparation, and financial analysis with 5+ years of practical experience.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>Building responsive and user-friendly websites using HTML, CSS, JavaScript, and modern web development practices.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3>Graphic Design</h3>
-                    <p>Creating visually appealing flyers, brochures, and marketing materials that capture attention and communicate brand messages effectively.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📊</div>
-                    <h3>Financial Analysis</h3>
-                    <p>Comprehensive financial analysis, budgeting, forecasting, and strategic financial planning for business growth.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📋</div>
-                    <h3>Tax Preparation</h3>
-                    <p>Expert knowledge in UAE tax regulations, VAT compliance, and corporate tax preparation with attention to detail.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔄</div>
-                    <h3>Business Process Optimization</h3>
-                    <p>Streamlining accounting processes, improving efficiency, and implementing best practices for operational excellence.</p>
-                </div>
+                                 <div class="skill-card">
+                     <div class="skill-icon">💼</div>
+                     <h3>Petty Cash & Payroll Management</h3>
+                     <p>Expert in managing petty cash, processing salary transfers, and handling payroll operations with 2+ years of practical experience.</p>
+                 </div>
+                                   <div class="skill-card">
+                      <div class="skill-icon">📋</div>
+                      <h3>Financial Document Authentication</h3>
+                      <p>Comprehensive verification and validation of financial documents, ensuring accuracy and compliance with regulatory standards.</p>
+                  </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">🛒</div>
+                     <h3>Inventory & Price Updates</h3>
+                     <p>Managing inventory systems, updating prices both online and offline, and maintaining accurate stock records.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">💰</div>
+                     <h3>Cashier Reconciliation</h3>
+                     <p>Reconciling cashier reports, ensuring accurate financial records and maintaining proper cash flow management.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">🎨</div>
+                     <h3>Flyer Design</h3>
+                     <p>Creating promotional flyers using Canva, Photoshop, and Adobe Illustrator for effective brand communication.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">💻</div>
+                     <h3>Web Development</h3>
+                     <p>Building responsive and user-friendly websites using HTML, CSS, JavaScript, and modern web development practices for enhanced digital presence.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">📊</div>
+                     <h3>Accounting Software</h3>
+                     <p>Proficient in Tally, Marg ERP, and MS Excel for comprehensive financial management and spreadsheet operations.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">📈</div>
+                     <h3>Financial Analysis</h3>
+                     <p>Expert in financial reporting, analysis, budgeting, and providing strategic financial insights for business growth.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">⚙️</div>
+                     <h3>Business Process Optimization</h3>
+                     <p>Streamlining business operations, improving efficiency, and implementing modern technological solutions.</p>
+                 </div>
             </div>
         </div>
     </section>
@@ -799,25 +878,18 @@
             <h2 class="section-title">Work Experience</h2>
             <div class="experience-timeline">
                                  <div class="experience-item">
+                     <h3>Senior Financial Controller & Creative Specialist</h3>
+                                           <div class="company">Multi-Business Enterprise (Supermarket & 12 Garment Ateliers)</div>
+                     <div class="location">UAE</div>
+                     <div class="duration">October 2023 - Present</div>
+                                           <p>Overseeing comprehensive financial operations for a diverse business portfolio including a supermarket and 12 garment ateliers. Responsibilities include strategic petty cash management, payroll processing, financial document authentication, inventory system optimization (both online and offline), and cashier reconciliation. Additionally managing bookings, deliveries, expenses, and monthly reporting for the garment atelier operations. Skilled in flyer design and web development, contributing to digital branding and online presence enhancement.</p>
+                 </div>
+                 <div class="experience-item">
                      <h3>Senior Accountant</h3>
-                     <div class="company">Natural Fresh Express Supermarket</div>
-                     <div class="location">Al Ain, Abu Dhabi, UAE</div>
-                     <div class="duration">2023 - Present</div>
-                     <p>Managing comprehensive accounting operations including financial reporting, bookkeeping, tax preparation, and inventory management. Responsible for maintaining accurate financial records, ensuring compliance with UAE regulations, and supporting business decision-making through detailed financial analysis. Key achievements include streamlining accounting processes, improving financial reporting accuracy by 25%, and implementing efficient inventory tracking systems.</p>
-                 </div>
-                 <div class="experience-item">
-                     <h3>Accountant & Travel Coordinator</h3>
-                     <div class="company">Tour and Travel Company</div>
-                     <div class="location">Previous Role</div>
-                     <div class="duration">2021 - 2023</div>
-                     <p>Handled dual responsibilities including comprehensive accounting functions and travel planning coordination. Managed client accounts, processed payments, planned detailed itineraries, and provided excellent customer service. Developed strong organizational skills while maintaining financial accuracy and supporting business operations.</p>
-                 </div>
-                 <div class="experience-item">
-                     <h3>Junior Accountant</h3>
-                     <div class="company">Various Companies</div>
-                     <div class="location">Previous Roles</div>
-                     <div class="duration">2019 - 2021</div>
-                     <p>Gained foundational experience in bookkeeping, financial data entry, and basic accounting procedures. Assisted senior accountants with daily financial operations and learned industry best practices.</p>
+                     <div class="company">Travel Agency</div>
+                     <div class="location">India</div>
+                     <div class="duration">August 2022 - September 2023</div>
+                     <p>Managed financial records, reconciliations, and reporting. Handled accounts payable, receivable, processed payroll and conducted financial audits. Developed strong organizational skills while maintaining financial accuracy and supporting business operations.</p>
                  </div>
             </div>
         </div>
@@ -826,24 +898,19 @@
      <section id="education">
          <div class="container">
              <h2 class="section-title">Education</h2>
-             <div class="education-card">
-                 <h3>Bachelor of Commerce (BCom)</h3>
-                 <p><strong>Sikkim Manipal University</strong></p>
-                 <p>2022 - Present (Currently Pursuing)</p>
-                 <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations. Key subjects include Financial Accounting, Business Management, Economics, Corporate Finance, and Strategic Management.</p>
-             </div>
-             <div class="education-card" style="margin-top: 2rem;">
-                 <h3>Diploma in Accounting</h3>
-                 <p><strong>Professional Accounting Institute</strong></p>
-                 <p>2018 - 2019</p>
-                 <p>Completed comprehensive training in accounting principles, bookkeeping practices, financial reporting, and tax preparation. Gained practical skills in using accounting software and understanding UAE accounting standards.</p>
-             </div>
-             <div class="education-card" style="margin-top: 2rem;">
-                 <h3>Web Development Certification</h3>
-                 <p><strong>Online Learning Platforms</strong></p>
-                 <p>2021 - Present</p>
-                 <p>Self-taught web development skills through various online courses and platforms. Proficient in HTML, CSS, JavaScript, and modern web development practices. Continuously learning new technologies and frameworks to enhance digital skills.</p>
-             </div>
+                           <div class="education-card">
+                  <h3>Bachelor of Commerce (B. Com)</h3>
+                  <p><strong>Sikkim Manipal University Online</strong></p>
+                  <p>2022 - Present (Expected Graduation: End of 2026)</p>
+                  <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations.</p>
+              </div>
+              <div class="education-card" style="margin-top: 2rem;">
+                  <h3>CABA MDTP Course</h3>
+                  <p><strong>National Institute of Electronics & Information Technology (NIELIT)</strong></p>
+                  <p>December 2022</p>
+                  <p>Completed specialized training in computer applications and business accounting, enhancing technical and professional skills.</p>
+              </div>
+              
          </div>
      </section>
      <!-- Resume Section -->
@@ -851,45 +918,66 @@
          <div class="container">
              <h2 class="section-title">Professional Resume</h2>
              <div class="resume-card">
-                 <div class="resume-header">
-                     <h3>Mohammad Ahmad</h3>
-                     <p class="resume-title">Professional Accountant & Web Developer</p>
-                     <p class="resume-location">📍 Al Ain, Abu Dhabi, UAE</p>
-                 </div>
+                                   <div class="resume-header">
+                      <div class="resume-profile-image">
+                          <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+                      </div>
+                      <h3>Mohammad Ahmad</h3>
+                                            <p class="resume-title">Professional Accountant, Web Developer & Creative Designer</p>
+                      <p class="resume-location">📍 Al Ain, Abu Dhabi, UAE</p>
+                  </div>
                  <div class="resume-content">
-                     <div class="resume-section">
-                         <h4>📋 Professional Summary</h4>
-                         <p>Dedicated professional with 5+ years of experience in accounting, financial management, and web development. Combines traditional financial acumen with modern technological solutions to drive business efficiency and growth. Currently pursuing BCom degree while working as Senior Accountant. Proven track record in streamlining processes, improving accuracy, and delivering exceptional results.</p>
-                     </div>
-                     <div class="resume-section">
-                         <h4>🎯 Core Competencies</h4>
-                         <ul class="competencies-list">
-                             <li>Financial Reporting & Analysis</li>
-                             <li>Bookkeeping & Tax Preparation</li>
-                             <li>UAE VAT Compliance & Regulations</li>
-                             <li>Web Development (HTML, CSS, JavaScript)</li>
-                             <li>Graphic Design & Marketing Materials</li>
-                             <li>Strategic Planning & Business Optimization</li>
-                             <li>Customer Service & Client Relations</li>
-                             <li>Inventory Management & Control</li>
-                             <li>Travel Coordination & Planning</li>
-                             <li>Accounting Software Proficiency</li>
-                         </ul>
-                     </div>
-                     <div class="resume-section">
-                         <h4>📈 Career Highlights</h4>
-                         <ul class="competencies-list">
-                             <li>5+ Years of Accounting Experience</li>
-                             <li>Senior Accountant at Natural Fresh Express</li>
-                             <li>Dual Role: Accountant & Travel Coordinator</li>
-                             <li>Currently Pursuing BCom Degree</li>
-                             <li>Self-Taught Web Developer</li>
-                             <li>Proficient in UAE Accounting Standards</li>
-                             <li>Improved Financial Reporting Accuracy by 25%</li>
-                             <li>Streamlined Accounting Processes</li>
-                             <li>Expert in UAE VAT Compliance</li>
-                         </ul>
-                     </div>
+                                           <div class="resume-section">
+                          <h4>📋 Professional Summary</h4>
+                                                                                                           <p>An accountant with over two years of experience, including 14 months as a Senior Accountant in a travel agency in India and 1 year of current experience managing accounting tasks for a multi-business enterprise in the UAE. Responsibilities include handling petty cash, processing salary transfers, authenticating financial documents, adding and updating items in the system (both online and offline), and reconciling cashier reports. Additionally responsible for managing bookings, deliveries, expenses, and monthly reporting for the garment atelier operations. Skilled in web development and flyer design, contributing to digital branding and online presence enhancement. Pursuing a Bachelor of Commerce (B. Com) to further enhance my accounting knowledge and skills.</p>
+                      </div>
+                      <div class="resume-section">
+                          <h4>🎯 Core Competencies</h4>
+                                                     <ul class="competencies-list">
+                               <li>Petty Cash & Payroll Management</li>
+                                                               <li>Financial Document Authentication</li>
+                               <li>Inventory & Price Updates (Online/Offline)</li>
+                               <li>Cashier Reconciliation</li>
+                               <li>Web Development (HTML, CSS, JavaScript, Responsive Design)</li>
+                               <li>Flyer Design (Canva, Photoshop, Adobe Illustrator)</li>
+                               <li>Accounting Software (Tally, Marg ERP)</li>
+                               <li>MS Excel & Spreadsheet Management</li>
+                               <li>Time Management & Multitasking</li>
+                               <li>Multi-Business Operations Management</li>
+                               <li>Financial Records & Reporting</li>
+                               <li>Financial Reporting & Analysis</li>
+                               <li>Bookkeeping & Tax Preparation</li>
+                               <li>UAE VAT Compliance & Regulations</li>
+                               <li>Business Process Optimization</li>
+                               <li>Financial Analysis & Budgeting</li>
+                               <li>Accounts Payable & Receivable</li>
+                               <li>Payroll Processing & Auditing</li>
+                               <li>Inventory Management Systems</li>
+                               <li>Digital Branding & Marketing</li>
+                           </ul>
+                      </div>
+                      <div class="resume-section">
+                          <h4>📈 Career Highlights</h4>
+                                                     <ul class="competencies-list">
+                               <li>2+ Years of Accounting Experience</li>
+                               <li>Senior Financial Controller & Creative Specialist at Multi-Business Enterprise</li>
+                               <li>Senior Accountant at Travel Agency, India</li>
+                               <li>Currently Pursuing B. Com Degree</li>
+                               <li>Proficient in Multiple Accounting Software</li>
+                               <li>Expert in Inventory Management Systems</li>
+                               <li>Skilled in Web Development & Promotional Flyer Design</li>
+                               <li>Multi-Business Operations Management</li>
+                               <li>Strong Time Management & Multitasking</li>
+                               <li>5+ Years of Combined Professional Experience</li>
+                               <li>Streamlined Accounting Processes & Improved Efficiency</li>
+                               <li>Enhanced Financial Reporting Accuracy by 25%</li>
+                               <li>Implemented Efficient Inventory Tracking Systems</li>
+                               <li>Expert in UAE Financial Regulations & Compliance</li>
+                               <li>Proven Track Record in Multi-Business Operations</li>
+                               <li>Skilled in Digital Transformation & Modern Technologies</li>
+                               <li>Strong Analytical & Problem-Solving Abilities</li>
+                           </ul>
+                      </div>
                      <div class="resume-download">
                          <a href="Rsume.pdf" download class="download-resume-btn">
                              📄 Download Full Resume (PDF)
@@ -911,13 +999,20 @@
                     <h3>Email</h3>
                     <p class="contact-text">mohammadahmadsheikh580@email.com</p>
                 </div>
-                <div class="contact-item">
-                    <a href="https://wa.me/971544899875" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
-                        <div class="contact-icon">📱</div>
-                    </a>
-                    <h3>Phone</h3>
-                    <p class="contact-text">+971 544 899 875</p>
-                </div>
+                                 <div class="contact-item">
+                     <a href="https://wa.me/971544899875" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                         <div class="contact-icon">📱</div>
+                     </a>
+                     <h3>Phone (UAE)</h3>
+                     <p class="contact-text">+971 544 899 875</p>
+                 </div>
+                 <div class="contact-item">
+                     <a href="https://wa.me/917376445451" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                         <div class="contact-icon">📱</div>
+                     </a>
+                     <h3>Phone (India)</h3>
+                     <p class="contact-text">+91 7376445451</p>
+                 </div>
                 <div class="contact-item">
                     <a href="https://maps.google.com/?q=Al+Ain+Abu+Dhabi+UAE" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
                         <div class="contact-icon">📍</div>
@@ -932,26 +1027,40 @@
                     <h3>LinkedIn</h3>
                     <p>Click icon to connect</p>
                 </div>
-                                 <div class="contact-item">
-                     <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
-                         <div class="contact-icon">📸</div>
-                     </a>
-                     <h3>Instagram</h3>
-                     <p>Click icon to follow</p>
-                 </div>
-                 <div class="contact-item">
-                     <a href="Rsume.pdf" download class="contact-icon-link">
-                         <div class="contact-icon">📄</div>
-                     </a>
-                     <h3>Resume</h3>
-                     <p>Click icon to download</p>
-                 </div>
+                                                   <div class="contact-item">
+                      <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                          <div class="contact-icon">📸</div>
+                      </a>
+                      <h3>Instagram</h3>
+                      <p>Click icon to follow</p>
+                  </div>
+                                     <div class="contact-item">
+                       <a href="https://www.facebook.com/mohammadahmad.ahmadsheikh" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                           <div class="contact-icon">📘</div>
+                       </a>
+                       <h3>Facebook</h3>
+                       <p>Click icon to connect</p>
+                   </div>
+                   <div class="contact-item">
+                       <a href="https://x.com/MoAhmadSheikh" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                           <div class="contact-icon">🐦</div>
+                       </a>
+                       <h3>X (Twitter)</h3>
+                       <p>Click icon to follow</p>
+                   </div>
+                   <div class="contact-item">
+                       <a href="Rsume.pdf" download class="contact-icon-link">
+                           <div class="contact-icon">📄</div>
+                       </a>
+                       <h3>Resume</h3>
+                       <p>Click icon to download</p>
+                   </div>
         </div>
     </section>
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Mohammad Ahmad. All rights reserved. | Professional Accountant & Web Developer</p>
+                         <p>&copy; 2024 Mohammad Ahmad. All rights reserved. | Professional Accountant, Web Developer & Creative Designer</p>
         </div>
     </footer>
     <script>
