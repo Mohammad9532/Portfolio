@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Mohammad Ahmad - Professional Accountant, Web Developer & Visual Communication Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --accent-2: #f5576c;
+            --accent-3: #4facfe;
+            --bg-light: #f8fafc;
+            --bg-dark: #1a1a2e;
+            --text-dark: #0f0f23;
+            --text-light: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 25px 80px rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            background: var(--gradient-hero);
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: heroZoom 30s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1.1) rotate(0deg); }
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.3) 25%, rgba(240,147,251,0.3) 50%, rgba(245,87,108,0.3) 75%, rgba(79,172,254,0.3) 100%);
+            animation: overlayPulse 12s ease-in-out infinite;
+        }
+        @keyframes overlayPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.02); }
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 45%),
+                radial-gradient(circle at 40% 60%, rgba(255,255,255,0.15) 0%, transparent 35%),
+                radial-gradient(circle at 60% 40%, rgba(255,255,255,0.18) 0%, transparent 40%);
+            animation: patternFloat 20s ease-in-out infinite;
+        }
+        @keyframes patternFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(2deg) scale(1.05); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 0;
+            position: relative;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            background: rgba(95,114,190,0.05);
+            border: 2px solid transparent;
+        }
+        .mobile-menu-toggle:hover {
+            background: linear-gradient(135deg, rgba(95,114,190,0.1), rgba(155,35,234,0.1));
+            border-color: rgba(95,114,190,0.3);
+            transform: scale(1.05);
+        }
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            margin: 5px 0;
+            transition: all 0.4s ease;
+            border-radius: 3px;
+        }
+                         .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: var(--gradient-hero);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: logoGradient 6s ease-in-out infinite;
+        }
+         .header-profile-image {
+             width: 45px;
+             height: 45px;
+             border-radius: 50%;
+             border: 2px solid rgba(95,114,190,0.3);
+             box-shadow: 0 4px 15px rgba(95,114,190,0.2);
+             overflow: hidden;
+             flex-shrink: 0;
+         }
+         .header-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
+        @keyframes logoGradient {
+            0%, 100% { background-position: 0% 50%; transform: scale(1); }
+            50% { background-position: 100% 50%; transform: scale(1.05); }
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        .logo:hover::after {
+            width: 100%;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .nav-links a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--text-light);
+            background: var(--gradient-primary);
+            transform: translateY(-5px) scale(1.08);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 60px rgba(102,126,234,0.3);
+        }
+        .nav-links a:hover::after {
+            width: 70%;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            background: none;
+        }
+                         .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255,255,255,0.95);
+            padding: 5rem 4rem;
+            border-radius: 40px;
+            box-shadow: 0 40px 120px rgba(0,0,0,0.15);
+            display: inline-block;
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+        }
+         .hero-profile-image {
+             width: 120px;
+             height: 120px;
+             border-radius: 50%;
+             margin: 0 auto 2rem auto;
+             border: 4px solid rgba(255,255,255,0.3);
+             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+             overflow: hidden;
+             display: block;
+         }
+         .hero-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            background: var(--gradient-hero);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 6s ease-in-out infinite alternate, gradientFlow 8s ease-in-out infinite;
+            text-shadow: 0 0 50px rgba(102,126,234,0.4);
+        }
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes textGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
+            100% { filter: drop-shadow(0 0 30px rgba(240,147,251,0.8)); }
+        }
+        .hero .subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            color: #5f72be;
+            font-weight: 500;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            color: var(--text-light);
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            box-shadow: 0 20px 60px rgba(102,126,234,0.4);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 6s ease infinite;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 30px 80px rgba(102,126,234,0.5);
+            animation-play-state: paused;
+        }
+        .secondary-btn {
+            background: var(--gradient-secondary);
+            margin-left: 1.5rem;
+            font-size: 1.4rem;
+            padding: 20px 50px;
+        }
+        .secondary-btn:hover {
+            background: var(--gradient-accent);
+        }
+        section {
+            padding: 120px 0 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        section:nth-child(even) {
+            background: rgba(248,250,252,0.8);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: 3px;
+            position: relative;
+            text-shadow: 0 8px 20px rgba(102,126,234,0.2);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 6px;
+            background: var(--gradient-hero);
+            border-radius: 4px;
+            margin: 30px auto 0 auto;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-light);
+            font-weight: bold;
+            box-shadow: 0 20px 60px rgba(95,114,190,0.3);
+            margin: 0 auto;
+            border: 8px solid #fff;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 600px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+        }
+        .skill-card {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem 2.5rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px);
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 100px; height: 100px;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        .skill-card:hover {
+            transform: translateY(-20px) scale(1.08);
+            box-shadow: 0 40px 100px rgba(102,126,234,0.3);
+            border-color: rgba(102,126,234,0.4);
+        }
+        .skill-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-light);
+            margin: 0 auto 2rem auto;
+            box-shadow: 0 15px 40px rgba(102,126,234,0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .skill-card p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .experience-item {
+            background: rgba(255,255,255,0.95);
+            padding: 3.5rem 4rem;
+            border-radius: 30px;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            left: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px);
+        }
+        .experience-item:hover {
+            transform: translateX(20px) scale(1.05);
+            box-shadow: 0 40px 100px rgba(102,126,234,0.3);
+            border-color: rgba(102,126,234,0.4);
+        }
+        .experience-item h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .experience-item .company {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .experience-item .location {
+            color: #888;
+            font-size: 0.98rem;
+            margin-bottom: 1rem;
+        }
+        .experience-item .duration {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+        }
+        .education-card {
+            background: rgba(255,255,255,0.95);
+            padding: 3.5rem 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px);
+        }
+        .education-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 40px 100px rgba(102,126,234,0.3);
+            border-color: rgba(102,126,234,0.4);
+        }
+                         .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+         .resume-card {
+             background: var(--card-bg);
+             padding: 3rem 2.5rem;
+             border-radius: 18px;
+             box-shadow: var(--shadow);
+             max-width: 900px;
+             margin: 0 auto;
+             transition: transform 0.3s, box-shadow 0.3s;
+         }
+         .resume-card:hover {
+             transform: translateY(-7px) scale(1.02);
+             box-shadow: 0 16px 40px rgba(95,114,190,0.18);
+         }
+         .resume-header {
+             text-align: center;
+             margin-bottom: 2.5rem;
+             padding-bottom: 2rem;
+             border-bottom: 2px solid var(--bg-light);
+         }
+         .resume-profile-image {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             margin: 0 auto 1.5rem auto;
+             border: 3px solid var(--primary);
+             box-shadow: 0 8px 25px rgba(95,114,190,0.2);
+             overflow: hidden;
+             display: block;
+         }
+         .resume-profile-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             border-radius: 50%;
+         }
+         .resume-header h3 {
+             color: var(--primary);
+             font-size: 2.5rem;
+             margin-bottom: 0.5rem;
+         }
+         .resume-title {
+             color: var(--secondary);
+             font-size: 1.3rem;
+             font-weight: 600;
+             margin-bottom: 0.5rem;
+         }
+         .resume-location {
+             color: #666;
+             font-size: 1.1rem;
+         }
+         .resume-content {
+             display: grid;
+             gap: 2rem;
+         }
+         .resume-section h4 {
+             color: var(--primary);
+             font-size: 1.4rem;
+             margin-bottom: 1rem;
+             font-weight: 600;
+         }
+         .resume-section p {
+             color: #555;
+             font-size: 1.1rem;
+             line-height: 1.7;
+         }
+         .competencies-list {
+             list-style: none;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 0.8rem;
+         }
+         .competencies-list li {
+             background: var(--bg-light);
+             padding: 0.8rem 1.2rem;
+             border-radius: 8px;
+             color: #555;
+             font-weight: 500;
+             border-left: 4px solid var(--primary);
+         }
+         .resume-download {
+             text-align: center;
+             margin-top: 2rem;
+             padding-top: 2rem;
+             border-top: 2px solid var(--bg-light);
+         }
+         .download-resume-btn {
+             display: inline-block;
+             padding: 1rem 2rem;
+             background: linear-gradient(45deg, var(--primary), var(--secondary));
+             color: var(--text-light);
+             text-decoration: none;
+             border-radius: 50px;
+             font-weight: 600;
+             font-size: 1.1rem;
+             transition: all 0.3s ease;
+             box-shadow: 0 4px 16px rgba(95,114,190,0.2);
+         }
+         .download-resume-btn:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(95,114,190,0.3);
+         }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .contact-item {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem 2.5rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px);
+        }
+        .contact-item:hover {
+            transform: translateY(-15px) scale(1.08);
+            box-shadow: 0 40px 100px rgba(102,126,234,0.3);
+            border-color: rgba(102,126,234,0.4);
+        }
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 15px 40px rgba(102,126,234,0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .contact-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .contact-item p {
+            color: #555;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .contact-text {
+            color: #555;
+            font-size: 0.9rem;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.4;
+        }
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            word-break: break-all;
+        }
+        .contact-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        .contact-icon-link {
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .contact-icon-link:hover {
+            transform: scale(1.1);
+        }
+        .contact-icon-link:hover .contact-icon {
+            box-shadow: 0 8px 24px rgba(95,114,190,0.25);
+        }
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2.5rem 0 2rem 0;
+            font-size: 1.1rem;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 900px) {
+            .about-content { flex-direction: column; gap: 2rem; }
+            .profile-image { margin-bottom: 1.5rem; }
+        }
+                 @media (max-width: 600px) {
+             .container { padding: 0 10px; }
+             .hero h1 { font-size: 2.1rem; }
+             .section-title { font-size: 1.5rem; }
+             .profile-image { width: 120px; height: 120px; font-size: 2rem; }
+             .hero-content { padding: 1.5rem 0.5rem; }
+             .hero-profile-image { width: 80px; height: 80px; }
+             .header-profile-image { width: 35px; height: 35px; }
+             .logo { font-size: 1.8rem; gap: 0.5rem; }
+            .nav-links { 
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .contact-text { font-size: 0.8rem; }
+            .about-text { font-size: 1rem; }
+            .experience-item { padding: 1.5rem; }
+            .education-card { padding: 1.5rem; }
+            .skill-card { padding: 1.5rem; }
+            .contact-item { padding: 1.5rem; }
+        }
+                 @media (max-width: 480px) {
+             .hero h1 { font-size: 1.8rem; }
+             .hero .subtitle { font-size: 1.1rem; }
+             .hero .tagline { font-size: 1rem; }
+             .section-title { font-size: 1.3rem; }
+             .profile-image { width: 100px; height: 100px; font-size: 1.5rem; }
+             .about-text { font-size: 0.9rem; }
+             .contact-text { font-size: 0.75rem; }
+             .hero-profile-image { width: 60px; height: 60px; }
+             .header-profile-image { width: 30px; height: 30px; }
+             .logo { font-size: 1.5rem; gap: 0.3rem; }
+         }
+    </style>
+</head>
+<body>
+    <div class="hero-bg">
+        <div class="bg-overlay"></div>
+        <div class="bg-pattern"></div>
+    </div>
+    <!-- Header -->
+    <header>
+                 <nav class="container">
+             <div class="logo">
+                 <div class="header-profile-image">
+                     <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+                 </div>
+                 Mohammad Ahmad
+             </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+                         <ul class="nav-links">
+                 <li><a href="#home">Home</a></li>
+                 <li><a href="#about">About</a></li>
+                 <li><a href="#skills">Skills</a></li>
+                 <li><a href="#experience">Experience</a></li>
+                 <li><a href="#education">Education</a></li>
+                 <li><a href="#resume">Resume</a></li>
+                 <li><a href="#contact">Contact</a></li>
+             </ul>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+                 <div class="hero-content">
+             <div class="hero-profile-image">
+                 <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+             </div>
+             <h1>Mohammad Ahmad</h1>
+                          <p class="subtitle">Professional Accountant, Web Developer & Visual Communication Specialist</p>
+                          <p class="tagline">Bridging Finance, Technology and Design with Precision and Innovation</p>
+                          <a href="#about" class="cta-button">Learn More About Me</a>
+              <a href="Rsume.pdf" download class="cta-button secondary-btn">Download Resume</a>
+         </div>
+    </section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="profile-image">
+                    <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad" class="profile-photo">
+                </div>
+                                 <div class="about-text">
+                                           <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with over three years of experience in financial management, web development, and creative design. Currently based in UAE, I bring a unique blend of accounting expertise, technical skills, and creative problem-solving to every project I undertake.</p>
+                      <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development and visual communication design represents my commitment to continuous learning and adapting to modern business needs. I specialize in web development, marketing collateral design, and digital branding efforts, helping businesses establish strong online presence and communicate their message effectively.</p>
+                      <p>I believe in the power of combining traditional financial acumen with modern technological and design solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing responsive websites, creating compelling marketing materials, or handling multiple business operations, I approach each challenge with enthusiasm and professionalism.</p>
+                                             <p><strong>Key Strengths:</strong> Working Capital Management, Financial Document Authentication, Inventory Management, Financial Transaction Reconciliation, Web Development, Marketing Collateral Design, Accounting Software, and Multi-Business Operations Management.</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                                 <div class="skill-card">
+                     <div class="skill-icon">💼</div>
+                     <h3>Working Capital & Payroll Management</h3>
+                     <p>Expert in managing operational finances, processing salary transfers, and handling payroll operations with 3+ years of practical experience.</p>
+                 </div>
+                                   <div class="skill-card">
+                      <div class="skill-icon">📋</div>
+                      <h3>Financial Document Authentication</h3>
+                      <p>Comprehensive verification and validation of financial documents, ensuring accuracy and compliance with regulatory standards.</p>
+                  </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">🛒</div>
+                     <h3>Inventory & Price Updates</h3>
+                     <p>Managing inventory systems, updating prices both online and offline, and maintaining accurate stock records.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">💰</div>
+                     <h3>Financial Transaction Reconciliation</h3>
+                     <p>Reconciling financial reports, ensuring accurate financial records and maintaining proper cash flow management.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">🎨</div>
+                     <h3>Marketing Collateral Design</h3>
+                     <p>Creating promotional materials and visual communications using Canva, Photoshop, and Adobe Illustrator for effective brand communication.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">💻</div>
+                     <h3>Web Development</h3>
+                     <p>Building responsive and user-friendly websites using HTML, CSS, JavaScript, and modern web development practices for enhanced digital presence.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">📊</div>
+                     <h3>Accounting Software</h3>
+                     <p>Proficient in Tally, Marg ERP, and MS Excel for comprehensive financial management and spreadsheet operations.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">📈</div>
+                     <h3>Financial Analysis</h3>
+                     <p>Expert in financial reporting, analysis, budgeting, and providing strategic financial insights for business growth.</p>
+                 </div>
+                 <div class="skill-card">
+                     <div class="skill-icon">⚙️</div>
+                     <h3>Business Process Optimization</h3>
+                     <p>Streamlining business operations, improving efficiency, and implementing modern technological solutions.</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="experience-timeline">
+                                 <div class="experience-item">
+                     <h3>Senior Financial Controller & Creative Specialist</h3>
+                                           <div class="company">Multi-Business Enterprise (Supermarket & Premium Fashion Manufacturing Network)</div>
+                     <div class="location">UAE</div>
+                     <div class="duration">October 2023 - Present</div>
+                                           <p>Overseeing comprehensive financial operations for a diverse business portfolio including a supermarket and a premium fashion manufacturing network. Responsibilities include strategic working capital management, payroll processing, financial document authentication, inventory system optimization (both online and offline), and financial transaction reconciliation. Additionally managing bookings, deliveries, expenses, and monthly reporting for the fashion manufacturing operations. Skilled in marketing collateral design and web development, contributing to digital branding and online presence enhancement.</p>
+                 </div>
+                 <div class="experience-item">
+                     <h3>Senior Accountant</h3>
+                     <div class="company">Travel Agency</div>
+                     <div class="location">India</div>
+                     <div class="duration">August 2022 - September 2023</div>
+                     <p>Managed financial records, reconciliations, and reporting. Handled accounts payable, receivable, processed payroll and conducted financial audits. Developed strong organizational skills while maintaining financial accuracy and supporting business operations.</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+         <!-- Education Section -->
+     <section id="education">
+         <div class="container">
+             <h2 class="section-title">Education</h2>
+                           <div class="education-card">
+                  <h3>Bachelor of Commerce (B. Com)</h3>
+                  <p><strong>Sikkim Manipal University Online</strong></p>
+                  <p>2023 - Present (Expected Graduation: End of 2026)</p>
+                  <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations.</p>
+              </div>
+              <div class="education-card" style="margin-top: 2rem;">
+                  <h3>CABA MDTP Course</h3>
+                  <p><strong>National Institute of Electronics & Information Technology (NIELIT)</strong></p>
+                  <p>December 2022</p>
+                  <p>Completed specialized training in computer applications and business accounting, enhancing technical and professional skills.</p>
+              </div>
+              
+         </div>
+     </section>
+     <!-- Resume Section -->
+     <section id="resume">
+         <div class="container">
+             <h2 class="section-title">Professional Resume</h2>
+             <div class="resume-card">
+                                   <div class="resume-header">
+                      <div class="resume-profile-image">
+                          <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
+                      </div>
+                      <h3>Mohammad Ahmad</h3>
+                                            <p class="resume-title">Professional Accountant, Web Developer & Visual Communication Specialist</p>
+                      <p class="resume-location">📍 Al Ain, Abu Dhabi, UAE</p>
+                  </div>
+                 <div class="resume-content">
+                                           <div class="resume-section">
+                          <h4>📋 Professional Summary</h4>
+                                                                                                           <p>An accountant with over three years of experience, including 14 months as a Senior Accountant in a travel agency in India and 2 years of current experience managing accounting tasks for a multi-business enterprise in the UAE. Responsibilities include handling working capital management, processing salary transfers, authenticating financial documents, adding and updating items in the system (both online and offline), and reconciling financial transactions. Additionally responsible for managing bookings, deliveries, expenses, and monthly reporting for the fashion manufacturing operations. Skilled in web development and marketing collateral design, contributing to digital branding and online presence enhancement. Pursuing a Bachelor of Commerce (B. Com) to further enhance my accounting knowledge and skills.</p>
+                      </div>
+                      <div class="resume-section">
+                          <h4>🎯 Core Competencies</h4>
+                                                     <ul class="competencies-list">
+                               <li>Working Capital & Payroll Management</li>
+                                                               <li>Financial Document Authentication</li>
+                               <li>Inventory & Price Updates (Online/Offline)</li>
+                               <li>Financial Transaction Reconciliation</li>
+                               <li>Web Development (HTML, CSS, JavaScript, Responsive Design)</li>
+                               <li>Marketing Collateral Design (Canva, Photoshop, Adobe Illustrator)</li>
+                               <li>Accounting Software (Tally, Marg ERP)</li>
+                               <li>MS Excel & Spreadsheet Management</li>
+                               <li>Time Management & Multitasking</li>
+                               <li>Multi-Business Operations Management</li>
+                               <li>Financial Records & Reporting</li>
+                               <li>Financial Reporting & Analysis</li>
+                               <li>Bookkeeping & Tax Preparation</li>
+                               <li>UAE VAT Compliance & Regulations</li>
+                               <li>Business Process Optimization</li>
+                               <li>Financial Analysis & Budgeting</li>
+                               <li>Accounts Payable & Receivable</li>
+                               <li>Payroll Processing & Auditing</li>
+                               <li>Inventory Management Systems</li>
+                               <li>Digital Branding & Marketing</li>
+                           </ul>
+                      </div>
+                      <div class="resume-section">
+                          <h4>📈 Career Highlights</h4>
+                                                     <ul class="competencies-list">
+                               <li>3+ Years of Accounting Experience</li>
+                               <li>Senior Financial Controller & Creative Specialist at Multi-Business Enterprise</li>
+                               <li>Senior Accountant at Travel Agency, India</li>
+                               <li>Currently Pursuing B. Com Degree</li>
+                               <li>Proficient in Multiple Accounting Software</li>
+                               <li>Expert in Inventory Management Systems</li>
+                               <li>Skilled in Web Development & Marketing Collateral Design</li>
+                               <li>Multi-Business Operations Management</li>
+                               <li>Strong Time Management & Multitasking</li>
+                               <li>5+ Years of Combined Professional Experience</li>
+                               <li>Streamlined Accounting Processes & Improved Efficiency</li>
+                               <li>Enhanced Financial Reporting Accuracy by 25%</li>
+                               <li>Implemented Efficient Inventory Tracking Systems</li>
+                               <li>Expert in UAE Financial Regulations & Compliance</li>
+                               <li>Proven Track Record in Multi-Business Operations</li>
+                               <li>Skilled in Digital Transformation & Modern Technologies</li>
+                               <li>Strong Analytical & Problem-Solving Abilities</li>
+                           </ul>
+                      </div>
+                     <div class="resume-download">
+                         <a href="Rsume.pdf" download class="download-resume-btn">
+                             📄 Download Full Resume (PDF)
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <a href="mailto:mohammadahmadsheikh580@email.com" class="contact-icon-link">
+                        <div class="contact-icon">📧</div>
+                    </a>
+                    <h3>Email</h3>
+                    <p class="contact-text">mohammadahmadsheikh580@email.com</p>
+                </div>
+                                 <div class="contact-item">
+                     <a href="https://wa.me/971544899875" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                         <div class="contact-icon">📱</div>
+                     </a>
+                     <h3>Phone (UAE)</h3>
+                     <p class="contact-text">+971 544 899 875</p>
+                 </div>
+                 <div class="contact-item">
+                     <a href="https://wa.me/917376445451" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                         <div class="contact-icon">📱</div>
+                     </a>
+                     <h3>Phone (India)</h3>
+                     <p class="contact-text">+91 7376445451</p>
+                 </div>
+                <div class="contact-item">
+                    <a href="https://maps.google.com/?q=Al+Ain+Abu+Dhabi+UAE" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">📍</div>
+                    </a>
+                    <h3>Location</h3>
+                    <p class="contact-text">Al Ain, Abu Dhabi, UAE</p>
+                </div>
+                                <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/mohammadahmad580" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <div class="contact-icon">💼</div>
+                    </a>
+                    <h3>LinkedIn</h3>
+                    <p>Click icon to connect</p>
+                </div>
+                                                   <div class="contact-item">
+                      <a href="https://www.instagram.com/mohammadahmad580/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                          <div class="contact-icon">📸</div>
+                      </a>
+                      <h3>Instagram</h3>
+                      <p>Click icon to follow</p>
+                  </div>
+                                     <div class="contact-item">
+                       <a href="https://www.facebook.com/mohammadahmad.ahmadsheikh" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                           <div class="contact-icon">📘</div>
+                       </a>
+                       <h3>Facebook</h3>
+                       <p>Click icon to connect</p>
+                   </div>
+                   <div class="contact-item">
+                       <a href="https://x.com/MoAhmadSheikh" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                           <div class="contact-icon">🐦</div>
+                       </a>
+                       <h3>X (Twitter)</h3>
+                       <p>Click icon to follow</p>
+                   </div>
+                   <div class="contact-item">
+                       <a href="Rsume.pdf" download class="contact-icon-link">
+                           <div class="contact-icon">📄</div>
+                       </a>
+                       <h3>Resume</h3>
+                       <p>Click icon to download</p>
+                   </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+                         <p>&copy; 2024 Mohammad Ahmad. All rights reserved. | Professional Accountant, Web Developer & Visual Communication Specialist</p>
+        </div>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+                 // Add scroll effect to header
+         window.addEventListener('scroll', function() {
+             const header = document.querySelector('header');
+             if (window.scrollY > 100) {
+                 header.style.background = 'rgba(255, 255, 255, 0.98)';
+                 header.style.boxShadow = '0 15px 50px rgba(95,114,190,0.2)';
+                 header.style.borderBottom = '2px solid rgba(95,114,190,0.2)';
+             } else {
+                 header.style.background = 'rgba(255, 255, 255, 0.95)';
+                 header.style.boxShadow = '0 10px 40px rgba(95,114,190,0.15)';
+                 header.style.borderBottom = '2px solid rgba(95,114,190,0.1)';
+             }
+         });
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(section);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
