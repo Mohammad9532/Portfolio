@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Mohammad Ahmad - Professional Accountant, Web Developer & Creative Designer</title>
+         <title>Mohammad Ahmad - Professional Accountant, Web Developer & Visual Communication Specialist</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -640,6 +640,155 @@
              transform: translateY(-3px);
              box-shadow: 0 8px 25px rgba(95,114,190,0.3);
          }
+        /* Timeline Styles */
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--secondary);
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 55%;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-company {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: var(--secondary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Timeline Responsive */
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 30px;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+                transform: none;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin: 0 0 0 60px !important;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -809,7 +958,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
+                                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#education">Education</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -822,7 +972,7 @@
                 <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
             </div>
             <h1>Mohammad Ahmad</h1>
-            <p class="subtitle">Professional Accountant, Web Developer & Creative Designer</p>
+                                        <p class="subtitle">Professional Accountant, Web Developer & Visual Communication Specialist</p>
             <p class="tagline">Bridging Finance, Technology and Design with Precision and Innovation</p>
             <a href="#about" class="cta-button">Learn More About Me</a>
             <a href="Rsume.pdf" download class="cta-button secondary-btn">Download Resume</a>
@@ -837,10 +987,10 @@
                     <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad" class="profile-photo">
                 </div>
                                  <div class="about-text">
-                    <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with over two years of experience in financial management, web development, and creative design. Currently based in UAE, I bring a unique blend of accounting expertise, technical skills, and creative problem-solving to every project I undertake.</p>
-                    <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development and flyer design represents my commitment to continuous learning and adapting to modern business needs. I specialize in web development, flyer designing, and digital branding efforts, helping businesses establish strong online presence and communicate their message effectively.</p>
-                    <p>I believe in the power of combining traditional financial acumen with modern technological and design solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing responsive websites, creating compelling marketing materials, or handling multiple business operations, I approach each challenge with enthusiasm and professionalism.</p>
-                    <p><strong>Key Strengths:</strong> Petty Cash Management, Financial Document Authentication, Inventory Management, Cashier Reconciliation, Web Development, Flyer Design, Accounting Software, and Multi-Business Operations Management.</p>
+                                            <p>Hello! I'm Mohammad Ahmad, a dedicated Professional Accountant with over three years of experience in financial management, web development, and creative design. Currently based in UAE, I bring a unique blend of accounting expertise, technical skills, and creative problem-solving to every project I undertake.</p>
+                        <p>With extensive experience in accounting and financial management, I've developed a keen eye for detail and accuracy. My journey into web development and visual communication design represents my commitment to continuous learning and adapting to modern business needs. I specialize in web development, marketing collateral design, and digital branding efforts, helping businesses establish strong online presence and communicate their message effectively.</p>
+                        <p>I believe in the power of combining traditional financial acumen with modern technological and design solutions to drive business growth and efficiency. Whether it's managing complex financial data, developing responsive websites, creating compelling marketing materials, or handling multiple business operations, I approach each challenge with enthusiasm and professionalism.</p>
+                        <p><strong>Key Strengths:</strong> Working Capital Management, Financial Document Authentication, Inventory Management, Financial Transaction Reconciliation, Web Development, Marketing Collateral Design, Accounting Software, and Multi-Business Operations Management.</p>
                 </div>
             </div>
         </div>
@@ -852,8 +1002,8 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">💼</div>
-                    <h3>Petty Cash & Payroll Management</h3>
-                    <p>Expert in managing petty cash, processing salary transfers, and handling payroll operations with 2+ years of practical experience.</p>
+                                            <h3>Working Capital & Payroll Management</h3>
+                        <p>Expert in managing operational finances, processing salary transfers, and handling payroll operations with 3+ years of practical experience.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">📋</div>
@@ -867,13 +1017,13 @@
                  </div>
                  <div class="skill-card">
                      <div class="skill-icon">💰</div>
-                     <h3>Cashier Reconciliation</h3>
-                     <p>Reconciling cashier reports, ensuring accurate financial records and maintaining proper cash flow management.</p>
+                                             <h3>Financial Transaction Reconciliation</h3>
+                        <p>Reconciling financial reports, ensuring accurate financial records and maintaining proper cash flow management.</p>
                  </div>
                  <div class="skill-card">
                      <div class="skill-icon">🎨</div>
-                     <h3>Flyer Design</h3>
-                     <p>Creating promotional flyers using Canva, Photoshop, and Adobe Illustrator for effective brand communication.</p>
+                                             <h3>Marketing Collateral Design</h3>
+                        <p>Creating promotional materials and visual communications using Canva, Photoshop, and Adobe Illustrator for effective brand communication.</p>
                  </div>
                  <div class="skill-card">
                      <div class="skill-icon">💻</div>
@@ -905,10 +1055,10 @@
             <div class="experience-timeline">
                 <div class="experience-item">
                     <h3>Senior Financial Controller & Creative Specialist</h3>
-                    <div class="company">Multi-Business Enterprise (Supermarket & 12 Garment Ateliers)</div>
-                    <div class="location">UAE</div>
-                    <div class="duration">October 2023 - Present</div>
-                    <p>Overseeing comprehensive financial operations for a diverse business portfolio including a supermarket and 12 garment ateliers. Responsibilities include strategic petty cash management, payroll processing, financial document authentication, inventory system optimization (both online and offline), and cashier reconciliation. Additionally managing bookings, deliveries, expenses, and monthly reporting for the garment atelier operations. Skilled in flyer design and web development, contributing to digital branding and online presence enhancement.</p>
+                                            <div class="company">Multi-Business Enterprise (Supermarket & Premium Fashion Manufacturing Network)</div>
+                        <div class="location">UAE</div>
+                        <div class="duration">October 2023 - Present</div>
+                        <p>Overseeing comprehensive financial operations for a diverse business portfolio including a supermarket and a premium fashion manufacturing network. Responsibilities include strategic working capital management, payroll processing, financial document authentication, inventory system optimization (both online and offline), and financial transaction reconciliation. Additionally managing bookings, deliveries, expenses, and monthly reporting for the fashion manufacturing operations. Skilled in marketing collateral design and web development, contributing to digital branding and online presence enhancement.</p>
                 </div>
                  <div class="experience-item">
                      <h3>Senior Accountant</h3>
@@ -920,14 +1070,78 @@
             </div>
         </div>
     </section>
-         <!-- Education Section -->
-     <section id="education">
+             <!-- Timeline Section -->
+    <section id="timeline">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <div class="timeline-company">Travel Agency, India</div>
+                        <p>Started my journey as a Senior Accountant, handling financial operations and gaining foundational experience in accounting practices.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Senior Accountant</span>
+                            <span class="tag">Financial Operations</span>
+                            <span class="tag">Accounting</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-company">Education Milestone</div>
+                        <p>Enrolled in Bachelor of Commerce (B.Com) program to enhance my accounting knowledge and business acumen.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">B.Com</span>
+                            <span class="tag">Higher Education</span>
+                            <span class="tag">Business Studies</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 2023 - Present</div>
+                        <div class="timeline-company">Multi-Business Enterprise, UAE</div>
+                        <p>Advanced to Senior Financial Controller & Creative Specialist role, managing comprehensive financial operations for multiple business units.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Financial Controller</span>
+                            <span class="tag">Multi-Business</span>
+                            <span class="tag">Creative Specialist</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-company">Skill Development</div>
+                        <p>Expanded expertise in web development, marketing collateral design, and digital branding while maintaining accounting excellence.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Digital Branding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
          <div class="container">
             <h2 class="section-title">Education</h2>
             <div class="education-card">
                 <h3>Bachelor of Commerce (B. Com)</h3>
                 <p><strong>Sikkim Manipal University Online</strong></p>
-                <p>2022 - Present (Expected Graduation: End of 2026)</p>
+                                        <p>2023 - Present (Expected Graduation: End of 2026)</p>
                 <p>Building a strong foundation in business principles, accounting standards, economics, and management practices. This comprehensive program is enhancing my analytical skills and providing deeper insights into modern business operations.</p>
             </div>
               <div class="education-card" style="margin-top: 2rem;">
@@ -949,23 +1163,23 @@
                         <img src="Screenshot 2025-08-06 211253.png" alt="Mohammad Ahmad">
                     </div>
                     <h3>Mohammad Ahmad</h3>
-                    <p class="resume-title">Professional Accountant, Web Developer & Creative Designer</p>
+                                            <p class="resume-title">Professional Accountant, Web Developer & Visual Communication Specialist</p>
                     <p class="resume-location">📍 Al Ain, Abu Dhabi, UAE</p>
                 </div>
                 <div class="resume-content">
                     <div class="resume-section">
                         <h4>📋 Professional Summary</h4>
-                        <p>An accountant with over two years of experience, including 14 months as a Senior Accountant in a travel agency in India and 1 year of current experience managing accounting tasks for a multi-business enterprise in the UAE. Responsibilities include handling petty cash, processing salary transfers, authenticating financial documents, adding and updating items in the system (both online and offline), and reconciling cashier reports. Additionally responsible for managing bookings, deliveries, expenses, and monthly reporting for the garment atelier operations. Skilled in web development and flyer design, contributing to digital branding and online presence enhancement. Pursuing a Bachelor of Commerce (B. Com) to further enhance my accounting knowledge and skills.</p>
+                        <p>An accountant with over three years of experience, including 14 months as a Senior Accountant in a travel agency in India and 2 years of current experience managing accounting tasks for a multi-business enterprise in the UAE. Responsibilities include handling working capital management, processing salary transfers, authenticating financial documents, adding and updating items in the system (both online and offline), and reconciling financial transactions. Additionally responsible for managing bookings, deliveries, expenses, and monthly reporting for the fashion manufacturing operations. Skilled in web development and marketing collateral design, contributing to digital branding and online presence enhancement. Pursuing a Bachelor of Commerce (B. Com) to further enhance my accounting knowledge and skills.</p>
                     </div>
                       <div class="resume-section">
                           <h4>🎯 Core Competencies</h4>
                                                      <ul class="competencies-list">
-                               <li>Petty Cash & Payroll Management</li>
+                                                               <li>Working Capital & Payroll Management</li>
                                                                <li>Financial Document Authentication</li>
                                <li>Inventory & Price Updates (Online/Offline)</li>
-                               <li>Cashier Reconciliation</li>
+                                                               <li>Financial Transaction Reconciliation</li>
                                <li>Web Development (HTML, CSS, JavaScript, Responsive Design)</li>
-                               <li>Flyer Design (Canva, Photoshop, Adobe Illustrator)</li>
+                                                               <li>Marketing Collateral Design (Canva, Photoshop, Adobe Illustrator)</li>
                                <li>Accounting Software (Tally, Marg ERP)</li>
                                <li>MS Excel & Spreadsheet Management</li>
                                <li>Time Management & Multitasking</li>
@@ -985,13 +1199,13 @@
                       <div class="resume-section">
                           <h4>📈 Career Highlights</h4>
                                                      <ul class="competencies-list">
-                               <li>2+ Years of Accounting Experience</li>
+                                                               <li>3+ Years of Accounting Experience</li>
                                <li>Senior Financial Controller & Creative Specialist at Multi-Business Enterprise</li>
                                <li>Senior Accountant at Travel Agency, India</li>
                                <li>Currently Pursuing B. Com Degree</li>
                                <li>Proficient in Multiple Accounting Software</li>
                                <li>Expert in Inventory Management Systems</li>
-                               <li>Skilled in Web Development & Promotional Flyer Design</li>
+                                                               <li>Skilled in Web Development & Marketing Collateral Design</li>
                                <li>Multi-Business Operations Management</li>
                                <li>Strong Time Management & Multitasking</li>
                                <li>5+ Years of Combined Professional Experience</li>
@@ -1086,7 +1300,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Mohammad Ahmad. All rights reserved. | Professional Accountant, Web Developer & Creative Designer</p>
+            <p>&copy; 2024 Mohammad Ahmad. All rights reserved. | Professional Accountant, Web Developer & Visual Communication Specialist</p>
         </div>
     </footer>
     <script>
