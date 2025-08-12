@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <!-- EmailJS CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <style>
         :root {
             --primary: #667eea;
@@ -3583,6 +3586,22 @@
             }
         }
         
+        // ===== FIREBASE CONFIGURATION =====
+        // Your actual Firebase config from Firebase Console
+        const firebaseConfig = {
+            apiKey: "AIzaSyDdKjdp2YssAgx4Y3j8HJb4Fk3bnb7nrpk",
+            authDomain: "portfolio-df8fe.firebaseapp.com",
+            projectId: "portfolio-df8fe",
+            storageBucket: "portfolio-df8fe.firebasestorage.app",
+            messagingSenderId: "792195291058",
+            appId: "1:792195291058:web:b4c0b3f2a79b311dd336ab",
+            measurementId: "G-DWY3MSN6CX"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
         // ===== EMAILJS INITIALIZATION =====
         (function() {
             emailjs.init("g8DclYHHu2olxGAv_"); // EmailJS Public Key
@@ -3629,22 +3648,65 @@
                 to_name: 'Mohammad Ahmad'
             };
             
-            // Send email using EmailJS
-            emailjs.send('service_gg05mpe', 'template_toviagl', templateParams) // EmailJS Service & Template IDs
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showNotification(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`, 'success');
-                    contactForm.reset();
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    showNotification('Sorry, there was an error sending your message. Please try again or contact me directly.', 'error');
-                })
-                .finally(function() {
-                    // Reset button state
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                });
+            // Store data in Firebase Firestore
+            db.collection('contact_submissions').add({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                ip_address: 'N/A', // You can add IP tracking if needed
+                user_agent: navigator.userAgent
+            })
+            .then(function(docRef) {
+                console.log('Data stored in Firebase with ID: ', docRef.id);
+                
+                // Send email using EmailJS
+                return emailjs.send('service_gg05mpe', 'template_toviagl', templateParams);
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showNotification(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`, 'success');
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                console.log('Error: ', error);
+                if (error.code === 'permission-denied') {
+                    showNotification('Data storage error, but email sent successfully.', 'info');
+                } else {
+                    showNotification('Sorry, there was an error. Please try again or contact me directly.', 'error');
+                }
+            })
+            .finally(function() {
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
+        
+        // Function to view stored contact submissions (for admin use)
+        function viewContactSubmissions() {
+            db.collection('contact_submissions')
+                .orderBy('timestamp', 'desc')
+                .limit(50)
+                .get()
+                .then(function(querySnapshot) {
+                    console.log('Contact Submissions:');
+                    querySnapshot.forEach(function(doc) {
+                        const data = doc.data();
+                        console.log(`ID: ${doc.id}`);
+                        console.log(`Name: ${data.name}`);
+                        console.log(`Email: ${data.email}`);
+                        console.log(`Subject: ${data.subject}`);
+                        console.log(`Message: ${data.message}`);
+                        console.log(`Timestamp: ${data.timestamp?.toDate()}`);
+                        console.log('---');
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Error getting documents: ', error);
+                });
+        }
         
         // Notification system
         function showNotification(message, type = 'info') {
