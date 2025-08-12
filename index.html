@@ -10,6 +10,7 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <style>
         :root {
             --primary: #667eea;
@@ -3587,7 +3588,6 @@
         }
         
         // ===== FIREBASE CONFIGURATION =====
-        // Your actual Firebase config from Firebase Console
         const firebaseConfig = {
             apiKey: "AIzaSyDdKjdp2YssAgx4Y3j8HJb4Fk3bnb7nrpk",
             authDomain: "portfolio-df8fe.firebaseapp.com",
@@ -3655,7 +3655,7 @@
                 subject: subject,
                 message: message,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                ip_address: 'N/A', // You can add IP tracking if needed
+                ip_address: 'N/A',
                 user_agent: navigator.userAgent
             })
             .then(function(docRef) {
